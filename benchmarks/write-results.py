@@ -1,3 +1,8 @@
+# It is supposed that results are located in folder `scan_path`.
+# Each result represents a folder with name which is equal to version.
+# After commiting some results it walks through folder `scan_path` 
+# and selects the latest version (in alphabetical order).
+
 from os import listdir, scandir
 from os.path import isfile, join
 
