@@ -7,7 +7,7 @@ name: Add results of benchmarks to README
 on:
   push:
     branches: ['master', 'main']
-    paths: 'results/*.txt'
+    # paths: 'results/*.txt'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
