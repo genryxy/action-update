@@ -5,7 +5,7 @@ name: Add results of benchmarks to README
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  pull:
+  push:
     branches: ['master', 'main']
     paths: 'results/*.txt'
 
