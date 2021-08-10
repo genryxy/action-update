@@ -3,7 +3,7 @@ from os.path import isfile, join
 
 PLUS_MINUS = '±'
 
-scan_path = 'results'
+scan_path = 'benchmarks/results'
 dirs = [f.path for f in scandir(scan_path) if f.is_dir()]
 # choose only path which last folder name consists of only dots and digits
 dirs = list(filter(lambda dir: dir.split('/')[-1].replace('.', '').isdecimal(), dirs))

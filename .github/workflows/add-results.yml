@@ -19,7 +19,7 @@ jobs:
     # Runs commands using the runners shell
     - name: Run python script
       run: |
-        python write-results.py 
+        python benchmarks/write-results.py 
     # Commit changes which were made in readme
     - name: Commit files 
       run: |
