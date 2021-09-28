@@ -33,7 +33,6 @@ jobs:
           echo "some results 3" > out/helm/third.txt
           echo "current directory:"
           ls -la
-          mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
           cp -avr out/$REPO /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
           ls -la /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
 #          git config --local user.name "github-action"
