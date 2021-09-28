@@ -27,3 +27,14 @@ jobs:
           cd benchmarks/adapters
           echo "$REPO"
           make prepare TARGET=$REPO
+          mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
+          cp -avr out/$REPO /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
+          ls -la /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
+#          git config --local user.name "github-action"
+#          git add .
+#          git commit -m "added results of benchmarks to readme (through action)"
+#      - name: Push changes # push the output folder to your repo
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          force: true
