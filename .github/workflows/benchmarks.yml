@@ -19,27 +19,19 @@ jobs:
       - name: Set env
         run: |
           export TAG=v0.0.0
-          export W_DIR=/home/runner
           export REPO=helm
           echo "$GITHUB_WORKSPACE"
           rm -rf benchmarks
           git clone https://github.com/artipie/benchmarks.git
           cd benchmarks/adapters
-          echo "$REPO"
-          make prepare TARGET=$REPO
-          mkdir -p out/helm
-          echo "some results 1" > out/helm/first.txt
-          echo "some results 2" > out/helm/second.txt
-          echo "some results 3" > out/helm/third.txt
-          echo "current directory:"
-          ls -la
+          make run TARGET=$REPO
+          mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
           cp -avr out/$REPO /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
-          ls -la /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
-#          git config --local user.name "github-action"
-#          git add .
-#          git commit -m "added results of benchmarks to readme (through action)"
-#      - name: Push changes # push the output folder to your repo
-#        uses: ad-m/github-push-action@master
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          force: true
+          git config --local user.name "github-action"
+          git add .
+          git commit -m "added results of benchmarks to readme (through action)"
+      - name: Push changes # push the output folder to your repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
