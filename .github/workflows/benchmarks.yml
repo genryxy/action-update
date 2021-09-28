@@ -26,12 +26,12 @@ jobs:
           rm -rf benchmarks
           git clone https://github.com/artipie/benchmarks.git
           cd benchmarks/adapters
-          make run TARGET=$REPO
-          mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
-          cp -avr out/$REPO /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
+          make run TARGET=${{ env.REPO }}
+          mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/${{ env.TAG }}
+          cp -avr out/${{ env.REPO }} /tmp/artipie-bench/${{ env.REPO }}/benchmarks/results/${{ env.TAG }}
       - name: Commit results
         run: |
-          cd /tmp/artipie-bench/$REPO
+          cd /tmp/artipie-bench/${{ env.REPO }}
           git config --local user.name "github-action"
           git add .
           git commit -m "added results of benchmarks to readme (through action)"
