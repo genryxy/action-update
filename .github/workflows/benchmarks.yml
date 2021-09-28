@@ -23,17 +23,18 @@ jobs:
           echo "$GITHUB_WORKSPACE"
       - name: Run target benchmark
         run: |
-          rm -rf benchmarks
-          git clone https://github.com/artipie/benchmarks.git
-          cd benchmarks/adapters
+#          rm -rf benchmarks
+#          git clone https://github.com/artipie/benchmarks.git
+#          cd benchmarks/adapters
           echo "repo value: ${{ env.REPO }}"
-          make run TARGET=${{ env.REPO }}
-          mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/${{ env.TAG }}
-          cp -avr out/${{ env.REPO }} /tmp/artipie-bench/${{ env.REPO }}/benchmarks/results/${{ env.TAG }}
+#          make run TARGET=${{ env.REPO }}
+#          mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/${{ env.TAG }}
+#          cp -avr out/${{ env.REPO }} /tmp/artipie-bench/${{ env.REPO }}/benchmarks/results/${{ env.TAG }}
       - name: Commit results
         run: |
           cd /tmp/artipie-bench/${{ env.REPO }}
           git config --local user.name "github-action"
+          git config --user user.email "benchmarks@artipie.com"
           git add .
           git commit -m "added results of benchmarks to readme (through action)"
       - name: Push results # push the output folder to the repo
