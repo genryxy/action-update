@@ -25,4 +25,5 @@ jobs:
           rm -rf benchmarks
           git clone https://github.com/artipie/benchmarks.git
           cd benchmarks/adapters
-          make prepare TARGET=$REPO
+          echo "$REPO"
+          make prepare TARGET="$REPO"
