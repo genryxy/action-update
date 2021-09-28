@@ -27,6 +27,8 @@ jobs:
           cd benchmarks/adapters
           echo "$REPO"
           make prepare TARGET=$REPO
+          echo "current directory:"
+          ls -la
           mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
           cp -avr out/$REPO /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
           ls -la /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
