@@ -26,6 +26,8 @@ jobs:
           rm -rf benchmarks
           git clone https://github.com/artipie/benchmarks.git
           cd benchmarks/adapters
+          env > echo
+          echo "repo value: $REPO"
           make run TARGET=${{ env.REPO }}
           mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/${{ env.TAG }}
           cp -avr out/${{ env.REPO }} /tmp/artipie-bench/${{ env.REPO }}/benchmarks/results/${{ env.TAG }}
