@@ -27,6 +27,10 @@ jobs:
           cd benchmarks/adapters
           echo "$REPO"
           make prepare TARGET=$REPO
+          mkdir -p out/helm
+          echo "some results 1" > out/helm/first.txt
+          echo "some results 2" > out/helm/second.txt
+          echo "some results 3" > out/helm/third.txt
           echo "current directory:"
           ls -la
           mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/$TAG
