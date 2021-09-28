@@ -22,6 +22,7 @@ jobs:
           echo "W_DIR=/home/runner"
           echo "REPO=helm"
           echo "$GITHUB_WORKSPACE"
+          rm -rf benchmarks
           git clone https://github.com/artipie/benchmarks.git
           cd benchmarks
           make run TARGET=$REPO
