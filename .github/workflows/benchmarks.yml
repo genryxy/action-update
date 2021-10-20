@@ -2,11 +2,11 @@ name: Run benchmarks
 on:
  push:
    tags:
-     - 'v*'
+     - 'test*'
 jobs:
   build:
     name: Run benchmark
-    runs-on: [self-hosted, bench]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.3
       - name: Set env
