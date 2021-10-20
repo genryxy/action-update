@@ -24,3 +24,17 @@ hs_err_pid*
 
 target/
 .idea/
+*.iml
+.DS_Store
+*.pdf
+*.aux
+*.bcf
+*.bbl
+*.fdb_latexmk
+*.fls
+*.run.xml
+*.blg
+.classpath
+.project
+.vscode/
+.settings/
