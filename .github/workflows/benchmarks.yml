@@ -1,8 +1,5 @@
 name: Run benchmarks
-on:
- push:
-   tags:
-     - 'test*'
+on: [push, pull_request]
 jobs:
   build:
     name: Run benchmark
