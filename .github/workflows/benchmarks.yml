@@ -14,15 +14,6 @@ jobs:
           echo "TAG=v0.0.0" >> $GITHUB_ENV
           echo "REPO=helm" >> $GITHUB_ENV
           echo "$GITHUB_WORKSPACE"
-#      - name: Run target benchmark
-#        run: |
-#          rm -rf benchmarks
-#          git clone https://github.com/artipie/benchmarks.git
-#          cd benchmarks/adapters
-#          echo "repo value: ${{ env.REPO }}"
-#          make run TARGET=${{ env.REPO }}
-#          mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/${{ env.TAG }}
-#          cp -avr out/${{ env.REPO }} /tmp/artipie-bench/${{ env.REPO }}/benchmarks/results/${{ env.TAG }}
       - name: Set user
         run: |
           git config --global user.name "github-action"
