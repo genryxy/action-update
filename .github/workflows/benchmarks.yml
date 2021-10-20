@@ -1,0 +1,48 @@
+name: Run benchmarks
+#on:
+#  push:
+#    tags:
+#      - 'v*'
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    name: Run benchmark
+    runs-on: [self-hosted, bench]
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - name: Set env
+        run: |
+          echo "TAG=v0.0.0" >> $GITHUB_ENV
+          echo "REPO=helm" >> $GITHUB_ENV
+          echo "$GITHUB_WORKSPACE"
+#      - name: Run target benchmark
+#        run: |
+#          rm -rf benchmarks
+#          git clone https://github.com/artipie/benchmarks.git
+#          cd benchmarks/adapters
+#          echo "repo value: ${{ env.REPO }}"
+#          make run TARGET=${{ env.REPO }}
+#          mkdir -p /tmp/artipie-bench/$REPO/benchmarks/results/${{ env.TAG }}
+#          cp -avr out/${{ env.REPO }} /tmp/artipie-bench/${{ env.REPO }}/benchmarks/results/${{ env.TAG }}
+      - name: Set user
+        run: |
+          git config --global user.name "github-action"
+          git config --global user.email "benchmarks@artipie.com"
+          date +%s > report.txt
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3.10.1
+        with:
+          commit-message: "bench: added results of benchmarks to readme (through action)"
+          branch: bench-results-${{ env.TAG }}
+          delete-branch: true
+          title: "bench: results of benchmarks for version ${{ env.TAG }}"
+          assignees: genryxy
+          reviewers: genryxy
+          labels: |
+            report
